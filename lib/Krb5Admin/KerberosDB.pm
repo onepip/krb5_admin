@@ -719,7 +719,7 @@ sub KHARON_ACL_bootstrap_host_key {
 		return "Permission denied: you are not bound to $host";
 	}
 
-	return;
+	return 1;
 }
 
 sub bootstrap_host_key {
