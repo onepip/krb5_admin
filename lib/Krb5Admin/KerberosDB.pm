@@ -163,12 +163,6 @@ sub KHARON_COMMON_ACL {
 	return 1 if defined($self->{local}) && $self->{local};
 
 	#
-	# First we provide an Kharon file based entitlement system which
-	# precedes all of the special processing...
-
-#	return 1 if $acl->check($verb);
-
-	#
 	# We also need creds.  This is mainly for my use running this
 	# by hand, but be that as it may...
 
