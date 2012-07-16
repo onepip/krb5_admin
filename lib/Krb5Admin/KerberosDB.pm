@@ -301,7 +301,10 @@ sub new {
 	# krb5_admind without upgrading the libraries that we will fail to
 	# start and hence not provide a security exposure.
 
-	die "Obsolete usage"	if !exists($args{kharon_doing_acls});
+	if ((!defined($args{acl}) || !$args{acl}->isa('Kharon::Entitlement')) &&
+	    (!defined($args{local}) || $args{local} != 1)) {
+		die "Obsolete usage";
+	}
 
 	my $self = $class->SUPER::new(%args);
 
