@@ -553,6 +553,21 @@ sub create_user {
 	$ret;
 }
 
+#
+# We provide a default ACL for creating bootstrap ids.  As our code
+# will by default use pkinit to WELLKNOWN/ANONYMOUS@REALM to create
+# these ids, we limit the ACL to these anonymous principals.
+
+sub KHARON_ACL_create_bootstrap_id {
+	my ($self, %args) = @_;
+
+	if ($self->{client} eq 'WELLKNOWN/ANONYMOUS@' . $args{realm}) {
+		return 1;
+	}
+
+	return 0;
+}
+
 sub create_bootstrap_id {
 	my ($self, %args) = @_;
 	my $ctx = $self->{ctx};
