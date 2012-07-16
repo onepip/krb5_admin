@@ -160,8 +160,6 @@ sub KHARON_COMMON_ACL {
 		return "Modification of $predicate[0] prohibited.";
 	}
 
-	return 1 if defined($self->{local}) && $self->{local};
-
 	#
 	# We also need creds.  This is mainly for my use running this
 	# by hand, but be that as it may...
