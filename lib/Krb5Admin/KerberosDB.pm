@@ -453,8 +453,6 @@ sub KHARON_ACL_generate_ecdh_key1 {
 			    join(', ', @gek_operations)];
 		}
 
-		# XXXrcd: well, this needs to be changed...
-		# XXXrcd: CHANGE THIS!
 		return $self->{acl}->check($operation, $name);
 	}
 
