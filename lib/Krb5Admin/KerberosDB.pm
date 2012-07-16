@@ -481,6 +481,8 @@ sub generate_ecdh_key2 {
 	return $ret;
 }
 
+sub KHARON_ACL_create { acl_keytab(@_); }
+
 sub create {
 	my ($self, $name, @args) = @_;
 	my $ctx  = $self->{ctx};
