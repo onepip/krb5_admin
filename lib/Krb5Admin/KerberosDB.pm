@@ -200,7 +200,7 @@ sub acl_keytab {
 	# <service>.
 
 	if (@pprinc != 3) {
-		return "Permission denied";
+		return "Keytab acls operate on 3 part principals.";
 	}
 
 	if ($pprinc[1] eq 'host') {
