@@ -694,7 +694,6 @@ sub create_bootstrap_id {
 
 sub KHARON_ACL_bootstrap_host_key {
 	my ($self, $cmd, $princ, $kvno, %args)  = @_;
-
 	my $ctx     = $self->{ctx};
 	my $dbh     = $self->{dbh};
 	my $subject = $self->{client};
