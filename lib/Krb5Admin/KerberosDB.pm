@@ -1505,22 +1505,22 @@ sub query_ticket {
 
 sub KHARON_ACL_fetch_tickets {
 	my ($self, $cmd, @predicate) = @_;
-
 	my $ctx = $self->{ctx};
+
 	my @sprinc = Krb5Admin::C::krb5_parse_name($ctx, $self->{client});
 
-	die [502, "Permission denied"]	if $sprinc[1] ne 'host';
-	die [502, "Permission denied"]	if $sprinc[2] ne $predicate[0];
+	return 0	if $sprinc[1] ne 'host';
+	return 0	if $sprinc[2] ne $predicate[0];
 
 	# Now, we must also check to ensure that the client is
 	# in the correct realm for the host that we have in our DB.
 
 	my $host = $self->query_host(name=>$predicate[0]);
 	if (!defined($host) || $host->{realm} ne $sprinc[0]) {
-		die [502, "Permission denied"];
+		return 0;
 	}
 	# The request is authorised.
-	return;
+	return 1;
 }
 
 sub fetch_tickets {
