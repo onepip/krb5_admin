@@ -264,7 +264,7 @@ sub acl_keytab {
 		}
 	} else {
 		if (@sprinc != 3) {
-			die [502, "Permission denied"];
+			return 0;
 		}
 
 		$denied = 'realm'	if $sprinc[0] ne $pprinc[0];
@@ -954,6 +954,8 @@ sub internal_modify {
 	return undef;
 }
 
+sub KHARON_ACL_mquery { return 1; }
+
 sub mquery {
 	my ($self, @args) = @_;
 
@@ -969,6 +971,8 @@ sub mquery {
 	}
 	@ret;
 }
+
+sub KHARON_ACL_query { return 1; }
 
 sub query {
 	my ($self, $name) = @_;
@@ -1180,6 +1184,8 @@ sub internal_modify_host {
 	return undef;
 }
 
+sub KHARON_ACL_query_host { return 1; }
+
 sub query_host {
 	my ($self, %query) = @_;
 	my $dbh = $self->{dbh};
@@ -1253,6 +1259,8 @@ sub insert_hostmap {
 
 	return undef;
 }
+
+sub KHARON_ACL_query_hostmap { return 1; }
 
 sub query_hostmap {
 	my ($self, $host) = @_;
@@ -1391,6 +1399,8 @@ sub insert_ticket {
 
 	return undef;
 }
+
+sub KHARON_ACL_query_ticket { return 1; }
 
 sub query_ticket {
 	my ($self, %query) = @_;
