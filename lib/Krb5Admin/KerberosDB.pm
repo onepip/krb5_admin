@@ -353,6 +353,7 @@ sub DESTROY {
 		$self->{dbh}->disconnect();
 		undef($self->{dbh});
 	}
+	undef $self->{acl};
 }
 
 sub init_db {
