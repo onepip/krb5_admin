@@ -88,7 +88,6 @@ sub mk_kmdb {
 		win_xrealm_bootstrap	=> \%win_xrealm_bootstrap,
 		prestash_xrealm		=> \%prestash_xrealm,
 		dbname			=> $dbname,
-		kharon_doing_acls	=> 1,
 	);
 	syslog('info', '%s connected from %s', $args{CREDS},
 	    $args{REMOTE_IP});
