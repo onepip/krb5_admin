@@ -75,7 +75,6 @@ sub mk_kmdb {
 
 	$acl->set_creds($args{CREDS});
 	$acl->set_subobjects($aclfile, $objacl);
-	$acl->set_opt('throw', 1);
 
 	$pes->set_acl($acl);
 
